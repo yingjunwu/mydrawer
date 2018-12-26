@@ -6,7 +6,7 @@ requirement:
 
 matplotlib-1.3.1
 
-There are some problems (e.g., font) when running the script if the matplotlib library's version is higher than 1.3.1.
+There are some problems (e.g., font) when running the script with matplotlib's version higher than 1.3.1.
 If you have installed a higher version, please do the following:
 
 ```
