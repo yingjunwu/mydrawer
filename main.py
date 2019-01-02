@@ -21,6 +21,9 @@ def ReadFile():
 
 if __name__ == "__main__":
 
+
+  figure_folder='figures/'
+
   # draw bar chart
   x_values = ['1.0%','2.5%','5.0%','7.5%','10%']
 
@@ -30,9 +33,9 @@ if __name__ == "__main__":
 
   legend_labels = ['test0','test1']
 
-  bar_chart.DrawFigure(x_values, y_values, legend_labels, 'percentage', 'Performance', 0, 30, 'bar_chart', False)
+  bar_chart.DrawFigure(x_values, y_values, legend_labels, 'percentage', 'Performance', 0, 30, figure_folder, 'bar_chart', True)
 
-  bar_chart.DrawLegend(legend_labels, 'bar_chart_legend')
+  bar_chart.DrawLegend(legend_labels, figure_folder, 'bar_chart_legend')
 
 
   # draw breakdown chart
@@ -53,12 +56,12 @@ if __name__ == "__main__":
   # break into 4 parts
   legend_labels = ['part0','part1','part2','part3']
 
-  breakdown_chart.DrawFigure(x_values, y_norm_values, legend_labels, 'percentage', 'breakdown', 'breakdown_chart', False)
+  breakdown_chart.DrawFigure(x_values, y_norm_values, legend_labels, 'percentage', 'breakdown', figure_folder, 'breakdown_chart', False)
 
-  breakdown_chart.DrawLegend(legend_labels, 'breakdown_chart_legend')
+  breakdown_chart.DrawLegend(legend_labels, figure_folder, 'breakdown_chart_legend')
 
 
-
+  # draw line chart
   legend_labels = ['Dow-Jones', 'S&P 500']
   dates, djs, sps = ReadFile()
 
@@ -72,7 +75,7 @@ if __name__ == "__main__":
   # we want to have two lines: Dow-Jones and S&P 500
   lines = [djs, sps]
 
-  line_chart.DrawFigure(years, lines, legend_labels, 'Year', 'Index', 1991, 2011, 0, 15000, 'line_chart', False)
-  line_chart.DrawLegend(legend_labels, 'line_chart_legend')
+  line_chart.DrawFigure(years, lines, legend_labels, 'Year', 'Index', 1991, 2011, 0, 15000, figure_folder, 'line_chart', False)
+  line_chart.DrawLegend(legend_labels, figure_folder, 'line_chart_legend')
 
 

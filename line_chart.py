@@ -1,18 +1,15 @@
 from common import *
 
 # draw a line chart
-def DrawFigure(x_values, y_values, legend_labels, x_label, y_label, x_min, x_max, y_min, y_max, filename, allow_legend, color_map = COLOR_MAP):
+def DrawFigure(x_values, y_values, legend_labels, x_label, y_label, x_min, x_max, y_min, y_max, folder, filename, allow_legend, color_map = COLOR_MAP):
 
-  assert(len(legend_labels) == len(y_values))
+  assert(len(legend_labels) >= len(y_values))
 
   # you may change the figure size on your own.
   fig = plt.figure(figsize=(8,3.2))
   figure = fig.add_subplot(111)
 
-  if not os.path.exists(FIGURE_FOLDER):
-    os.makedirs(FIGURE_FOLDER)
-
-  lines = [None] * (len(legend_labels))
+  lines = [None] * (len(y_values))
   for i in range(len(y_values)):
     lines[i], = figure.plot(x_values, y_values[i], color=color_map[i], \
                 linewidth=LINE_WIDTH, marker=MARKERS[i], \
@@ -20,8 +17,8 @@ def DrawFigure(x_values, y_values, legend_labels, x_label, y_label, x_min, x_max
 
   # sometimes you may not want to draw legends.
   if allow_legend == True:
-    plt.legend(lines, legend_labels, prop=LEGEND_FP, 
-                     loc='upper center', ncol=2, mode='expand', bbox_to_anchor=(0.45, 1.2), shadow=False,
+    figure.legend(lines, legend_labels, prop=LEGEND_FP, 
+                     loc='upper center', ncol=2, bbox_to_anchor=(0.45, 1.2), shadow=False,
                      frameon=False, borderaxespad=0.0, handlelength=2, labelspacing=0.2)
 
   plt.xticks(x_values)
@@ -29,7 +26,7 @@ def DrawFigure(x_values, y_values, legend_labels, x_label, y_label, x_min, x_max
   plt.xlim(x_min, x_max)
   plt.ylim(y_min, y_max)
 
-  plt.grid(axis='y',color='gray')
+  figure.grid(axis='y',color='gray')
   figure.yaxis.set_major_locator(LinearLocator(6))
   figure.xaxis.set_major_locator(LinearLocator(6))
   
@@ -41,11 +38,14 @@ def DrawFigure(x_values, y_values, legend_labels, x_label, y_label, x_min, x_max
   
   size = fig.get_size_inches()
   dpi = fig.get_dpi()
-  
-  plt.savefig(FIGURE_FOLDER + "/" + filename + ".eps", bbox_inches='tight', format='eps')
-  ConvertEpsToPdf(FIGURE_FOLDER + "/" + filename)
 
-def DrawLegend(legend_labels, filename, color_map = COLOR_MAP):
+  if not os.path.exists(folder):
+    os.makedirs(folder)
+  
+  plt.savefig(folder + "/" + filename + ".eps", bbox_inches='tight', format='eps')
+
+
+def DrawLegend(legend_labels, folder, filename, color_map = COLOR_MAP):
   fig = pylab.figure()
   ax1 = fig.add_subplot(111)
   LINE_WIDTH = 8.0
@@ -69,5 +69,5 @@ def DrawLegend(legend_labels, filename, color_map = COLOR_MAP):
                    frameon=False, borderaxespad=0.0, handlelength=2)
 
   # no need to export eps in this case.
-  figlegend.savefig(FIGURE_FOLDER + '/' + filename + '.pdf')
+  figlegend.savefig(folder + '/' + filename + '.pdf')
 
