@@ -19,3 +19,10 @@ To check matplotlib's version, open your python shell, and then type in:
 import matplotlib
 print(matplotlib.__version__)
 ```
+
+The code has been tested in the following environments:
+```
+macOS Mojave (10.14), python 2.7
+```
+
+It is known that the code does not work with `virtualenv`, due to certain problems with matplotlib.
