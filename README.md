@@ -25,6 +25,9 @@ print(matplotlib.__version__)
 The code has been tested in the following environments:
 ```
 macOS Mojave (10.14), python 2.7
+Ubuntu 16.04, python 2.7
 ```
 
 It is known that the code does not work with `virtualenv`, due to certain problems with matplotlib.
+
+TODO: refactor the code to work with the latest `matplotlib` library.
