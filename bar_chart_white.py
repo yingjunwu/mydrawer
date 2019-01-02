@@ -54,7 +54,7 @@ def DrawFigure(x_values, y_values, legend_labels, x_label, y_label, y_min, y_max
   # plt.ylim(y_min,y_max)
 
   figure.grid(axis='y',color='white',linestyle='--')
-  figure.yaxis.set_major_locator(LinearLocator(6))
+  figure.yaxis.set_major_locator(LinearLocator(3))
   
   figure.get_xaxis().set_tick_params(direction='in', pad=10)
   figure.get_yaxis().set_tick_params(direction='in', pad=10)

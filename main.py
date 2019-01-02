@@ -1,6 +1,10 @@
 import bar_chart
 import breakdown_chart
 import line_chart
+
+import bar_chart_white
+
+
 import csv
 
 # example for reading csv file
@@ -36,6 +40,8 @@ if __name__ == "__main__":
   bar_chart.DrawFigure(x_values, y_values, legend_labels, 'percentage', 'Performance', 0, 30, figure_folder, 'bar_chart', True)
 
   bar_chart.DrawLegend(legend_labels, figure_folder, 'bar_chart_legend')
+
+  bar_chart_white.DrawFigure(x_values, y_values, legend_labels, 'percentage', 'Performance', 0, 30, figure_folder, 'bar_chart_white', True)
 
 
   # draw breakdown chart
